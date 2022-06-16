@@ -1,0 +1,11 @@
+{
+  "name": "wagm",
+  "version": "1.0.0",
+  "description": "Solo Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tristan Onfroy",
+  "license": "MIT"
+}
