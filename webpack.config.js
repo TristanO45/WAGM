@@ -8,6 +8,9 @@ module.exports = {
         filename: 'bundle.js'
     },
     mode: "production",
+    devServer: {
+        hot: true
+    },
     module: {
         rules: [
             {
