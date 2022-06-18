@@ -2,18 +2,56 @@
   "name": "wagm",
   "version": "1.0.0",
   "description": "Solo Project",
-  "main": "index.js",
+  "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/server.js",
+    "dev": "webpack serve --open",
+    "build": "webpack",
+    "server": "nodemon backend/server.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "client"
+    ]
   },
   "author": "Tristan Onfroy",
   "license": "MIT",
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "browserify": "^17.0.0",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "gulp": "^4.0.2",
+    "mongoose": "^6.3.8",
+    "prop-types": "^15.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "isomorphic-fetch": "^3.0.0",
+    "nodemon": "^2.0.7",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TristanO45/WAGM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TristanO45/WAGM/issues"
+  },
+  "homepage": "https://github.com/TristanO45/WAGM#readme"
 }

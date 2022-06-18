@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+# api keys etc
+.env
+
+#production
+/build

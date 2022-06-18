@@ -4,23 +4,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './client/index.js',
     output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'index_bundle.js'
+        path: path.resolve(__dirname, 'build'),
+        filename: 'bundle.js'
     },
+    mode: "production",
     module: {
         rules: [
             {
-                test: /|.js$/,
-                excluse: /node_modules/,
+                test: /\.jsx?/,
+                exclude: /(node_modules)/,
                 use: {
-                    loader: 'babe-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                          '@babel/preset-env', 
+                          '@babel/preset-react' 
+                        ]
+                      }, 
                 },
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './client/index.html'
+            template: './index.html'
         })
     ]
-}
+};
