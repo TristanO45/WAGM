@@ -3,9 +3,10 @@ const path = require('path')
 const dotenv = require('dotenv').config()
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 4000;
-// const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api')
 
 const bodyParser = require('express').json
+app.use(bodyParser());
 
 const app = express();
 
@@ -18,8 +19,10 @@ db.once('open', () => console.log('Connected to Database...'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Route Handlers
-// app.use('/api', apiRouter)
+
+
+// signup & login route handler
+app.use('/api', apiRouter);
 
 // statically serve everything in the build folder on the route build
 app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -29,21 +32,6 @@ app.get('/', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, '../index.html'))
 });
 
-// signup
-
-app.get('/signup', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, ))
-});
-
-app.post('/signup', (err, req, res, next) => {
-    // res.redirect()
-})
-
-// login
-
-app.post('/login', (req, res) => {
-    // res.redirect()
-})
 
 
 
