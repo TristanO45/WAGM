@@ -3,12 +3,12 @@ const path = require('path')
 const dotenv = require('dotenv').config()
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 4000;
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api.js')
+
+const app = express();
 
 const bodyParser = require('express').json
 app.use(bodyParser());
-
-const app = express();
 
 const mongoURI = process.env.mongoURI
 mongoose.connect(mongoURI)

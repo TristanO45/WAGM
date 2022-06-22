@@ -1,20 +1,26 @@
-const User = require('./models/userModel');
+const User = require('../models/userModel');
+const bcrypt = require('bcrypt')
+// mongoDB user model
+const userSchema = require('../models/userModel')
 
-const userController = {
+
+const userController = {};
     // Create a new user in the database
     // Will be used for signup
 
-    createUser(req, res, next) {
-        const { username, password } = req.body;
-        User.create({ username, password })
+    userController.createUser = (req, res, next) => {
+        const { username, password } = req.body.data;
+        const cryptPassword = bcrypt.hash(password, 10);
+
+        User.create({ username, cryptPassword })
         .then((user) => {
-            res.status(201).json(student)
+            res.status(201).json(user)
         }).catch((err) => {
             return next(err)
         });
-    },
+    }
 
-    verifyUser(req, res, next) {
+    userController.verifyUser = (req, res, next) => {
         const { username, password, date } = req.body;
         // Try to return any errors right away
     if (username == '' || password == '') {
@@ -37,10 +43,12 @@ const userController = {
             } else {
                 // if document was NOT found
                 res.locals.err = 'User not found';
+                return next()
             }
         }).catch(err => {
             console.log(err);
             return next(err);
         })  
-    },
-}
+    }
+
+module.exports = userController;
