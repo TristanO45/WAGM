@@ -1,12 +1,19 @@
-import React from 'react'
+import React from "react";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { Feed } from "./components/Feed.jsx";
+import { Login } from "./components/Login.jsx"; // What someone sees to login
+//import Navbar from "./components/Nav";
 
 const App = () => {
-    return ( 
-         <div>
-            <h1>W.A.G.M.</h1>
-            <h3>Established 2011</h3> 
-        </div>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/feed" element={<Feed />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

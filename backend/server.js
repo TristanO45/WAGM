@@ -3,7 +3,7 @@ const path = require('path')
 const dotenv = require('dotenv').config()
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 4000;
-const apiRouter = require('./routes/api.js')
+const apiRouter = require('./routes/api')
 
 const app = express();
 
@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 // signup & login route handler
 app.use('/api', apiRouter);
 
-// statically serve everything in the build folder on the route build
-app.use('/build', express.static(path.join(__dirname, '../build')));
+// statically serve everything in the bundle folder on the route bundle
+app.use('/bundle', express.static(path.join(__dirname, '../bundle')));
 
 // serve index.html on '/' route
 app.get('/', (req, res) => {
