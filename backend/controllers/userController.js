@@ -33,7 +33,7 @@ userController.verifyUser = async (req, res, next) => {
       // if document (user) was found,
       if (result) {
         // Will need to use bcrypt.compare once bcrypt is setup
-        bycrypt.compare(password, result.password, (err, isMatch) => {
+        bcrypt.compare(password, result.password, (err, isMatch) => {
           if (err) {
             throw err;
           }
