@@ -44,13 +44,13 @@ module.exports = {
       template: "./index.html",
     }),
   ],
-  devServer: {
-    static: {
-      publicPath: "/bundle",
-      directory: path.join(__dirname, "client"),
-    },
-    proxy: {
-      "/api": "http://localhost:4000",
-    },
-  },
+  // devServer: {
+  //   static: {
+  //     publicPath: "/bundle",
+  //     directory: path.join(__dirname, "client"),
+  //   },
+  //   proxy: {
+  //     "/api": "http://localhost:4000",
+  //   },
+  // },
 };
