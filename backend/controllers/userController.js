@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const userSchema = require("../models/userModel");
+const User = require("../models/userModel");
 
 const userController = {};
 // Create a new user in the database
@@ -7,10 +7,11 @@ const userController = {};
 
 userController.createUser = async (req, res, next) => {
   try {
-    const { username, password, date } = req.body.userInfo;
+    const { username, password } = req.body;
+    console.log(req.body)
     const cryptPassword = await bcrypt.hash(password, 10);
-    await userSchema
-      .create({ username, cryptPassword, date })
+    await User
+      .create({ username, password: cryptPassword })
       .then((userSaved) => {
         res.locals.user = userSaved;
         return next();
@@ -27,9 +28,9 @@ userController.createUser = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
   try {
-    const { username, password } = req.body.userInfo;
+    const { username, password } = req.body;
     // Checking if the user already exists
-    await userSchema.findOne({ username }).then((result) => {
+    await User.findOne({ username }).then((result) => {
       // if document (user) was found,
       if (result) {
         // Will need to use bcrypt.compare once bcrypt is setup

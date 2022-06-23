@@ -19,18 +19,23 @@ db.once("open", () => console.log("Connected to Database..."));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-if (process.env.NODE_ENV === "production") {
   // signup & login route handler
-  app.use("/api", apiRouter);
+app.use("/api", apiRouter);
+
+if (process.env.NODE_ENV === "production") {
 
   // statically serve everything in the bundle folder on the route bundle
-  app.use("/bundle", express.static(path.join(__dirname, "../bundle")));
+  app.use("/build", express.static(path.join(__dirname, "../build")));
 
   // serve index.html on '/' route
   app.get("/", (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, "../index.html"));
   });
 };
+
+app.all('*', (req, res, next) => {
+  res.status(404).json('Not found');
+});
 
 app.use((err, req, res, next) => {
   const defaultErr = {

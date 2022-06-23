@@ -7,11 +7,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
+    <App /> 
   </React.StrictMode>
 );
+
+// User will input username and password - click login
+// upon clicking login, navigate to FEED page
+
 
 // ReactDOM.render(
 //     <React.StrictMode>
