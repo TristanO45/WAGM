@@ -4,10 +4,9 @@
   "description": "Solo Project",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "webpack serve --open",
-    "build": "webpack",
-    "server": "nodemon backend/server.js"
+    "start": "node server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./backend/server.js\""
   },
   "nodemonConfig": {
     "ignore": [
@@ -25,8 +24,10 @@
     "gulp": "^4.0.2",
     "mongoose": "^6.3.8",
     "prop-types": "^15.6.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",

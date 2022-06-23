@@ -1,14 +1,14 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login } from "./components/Login.js";
+import { BrowserRouter, Switch, Routes, Route } from "react-router-dom";
+import { Login } from "./components/Login.jsx";
+import { Feed } from "./components/Feed.jsx";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<Login />}></Route>
+      <Route path="/feed" element={<Feed />}></Route>
+    </Routes>
     // <div>
     //   <h1>W.A.G.M.</h1>
     //   <h3>Established 2011</h3>
