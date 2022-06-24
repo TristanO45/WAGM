@@ -11,9 +11,15 @@ Hopefully I can have this all done by mid day Friday so I can start working on m
 
 TODO TOMORROW:
 
-- Watch YT video Design Beautiful Signin & Signup Form using Material UI || Material UI || React
+- Watch YT video - Design Beautiful Signin & Signup Form using Material UI || Material UI || React
   to setup toggle form
 
 - get signup functionality working.
 
 - work on feed page.
+
+6/24 5pm (Half day Break)
+
+My login/signup page ui is setup and my login is able to retrieve data from the db.
+
+Next step is to handle routing after login and creating a user in the db and routing to feed page after signup. Use Code Charlie provided as reference.

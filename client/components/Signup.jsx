@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import reactDOM from "react-dom"
+import "../app.css";
 import axios from "axios";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Paper from "@mui/material/Paper";
+import Box from '@mui/material/Box';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 export const Signup = () => {
@@ -30,16 +43,35 @@ export const Signup = () => {
       });
   };
 
-  // Bootleg way to reroute someone if theyre logged in
-  // if (loggedIn) {
-  //   setTimeout(() => {
-  //     props.history.push("/someotherpage");
-  //   }, 0);
-  // }
+  const paperStyle = {
+    padding: 20,
+    height: '40vh',
+    width: 280,
+  margin: '0 auto'}
+  const btnstyle = {margin: '8px 0'}
+
 
   console.log(`is the user logged in: ${loggedIn}`);
   return (
-       <form>
+    <Grid>
+      <Paper elevation={10} style={paperStyle}>
+        <Grid align='center'>
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <h2>Sign Up</h2>
+        </Grid>
+        <TextField label='Username' plaeholder='Enter username' fullWidth required/>
+        <TextField label='Password' plaeholder='Enter password' type='password' fullWidth required/>
+        <TextField label='Confirm Password' plaeholder='Confirm password' type='password' fullWidth required/>
+        <Button onClick={onSubmit} type='submit' color='primary' variant='contained' style={btnstyle} fullWidth> Create account and Sign in</Button>
+      </Paper>
+    </Grid>       
+  );
+};
+
+
+
+
+{/* <form>
         <TextField
           onChange={(e) => setUsername(e.target.value)}
           variant="outlined"
@@ -62,9 +94,9 @@ export const Signup = () => {
         />
 
         <Button onClick={onSubmit}> Login </Button>
-      </form> 
-  );
-};
+      </form>  */}
+
+
 
 
 // const onChange =(event) => {
