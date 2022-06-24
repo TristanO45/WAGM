@@ -8,14 +8,14 @@ const userController = {};
 userController.createUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    console.log(req.body)
+    console.log(req.body);
     const cryptPassword = await bcrypt.hash(password, 10);
-    await User
-      .create({ username, password: cryptPassword })
-      .then((userSaved) => {
+    await User.create({ username, password: cryptPassword }).then(
+      (userSaved) => {
         res.locals.user = userSaved;
         return next();
-      });
+      }
+    );
   } catch (err) {
     return next({
       log: `userController.createUser: ERROR: ${err}`,
