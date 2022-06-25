@@ -1,6 +1,7 @@
 // import * as React from 'react';
 import React, { useState } from "react";
 import reactDOM from "react-dom";
+import { Redirect, useNavigate } from "react-router-dom";
 import "../app.css";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
@@ -26,9 +27,11 @@ export const Login = () => {
   const [username, setUsername] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const onSubmit = (e) => {
+  const history = useNavigate();
+
+  const loginHandler = (e) => {
     e.preventDefault();
-    console.log("onSubmit post called");
+    console.log("loginClickHandler post called");
 
     axios
       .post("/api/login", {
@@ -41,17 +44,16 @@ export const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(`Error occured in onSubmit: ${err}`);
+        console.log(`Error occured in loginHandler: ${err}`);
       });
       console.log("user has been logged in")
   };
 
-  // Bootleg way to redirect
-  //  if (loggedIn) {
-  //       setTimeout(() => {
-  //         props.history.push("/feed");
-  //       }, 0);
-  //     }
+   if (loggedIn) {
+        setTimeout(() => {
+          history("/feed");
+        }, 0);
+      }
 
   const paperStyle = {
     padding: 20,
@@ -83,7 +85,7 @@ export const Login = () => {
           required
         />
         <Button
-          onClick={onSubmit}
+          onClick={loginHandler}
           type="submit"
           color="primary"
           variant="contained"

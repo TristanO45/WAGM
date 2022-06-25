@@ -1,9 +1,11 @@
 import React from "react";
+import videoBg from '../assets/backgroundVid.mp4'
 
 export const Feed = () => {
   return (
     <div>
-      <h1>FEED PAGE</h1>
+      Feed
+  
     </div>
   );
 };

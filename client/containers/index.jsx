@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import reactDOM from "react-dom"
+import videoBg from '../assets/backgroundVid.mp4' 
 import "../app.css";
 import Paper from "@mui/material/Paper";
 import Tabs from "@mui/material/Tabs";
@@ -38,6 +39,9 @@ export const SignInOutContainer = () => {
   }
 
   return (
+    <div className='main'>
+      <video src={videoBg} autoPlay loop muted />
+      <div className="content">
     <Paper elevation={20} style={paperStyle}>
       <Tabs
         value={value}
@@ -56,5 +60,7 @@ export const SignInOutContainer = () => {
         <Signup />
       </TabPanel>
     </Paper>
+    </div>
+    </div>
   );
 };

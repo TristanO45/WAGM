@@ -34,7 +34,6 @@ app.use(express.urlencoded({ extended: true }));
 //   apiRouter
 // );
 app.use("/api", apiRouter);
-
 if (process.env.NODE_ENV === "production") {
   // statically serve everything in the bundle folder on the route bundle
   app.use("/build", express.static(path.join(__dirname, "../build")));
